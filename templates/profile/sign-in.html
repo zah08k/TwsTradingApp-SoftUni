@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section id="signInPage">
+        <form method="post" action="{% url 'sign in' %}">
+        {{ form.as_p }}
+        <button type="submit">Sign In</button>
+        {% csrf_token %}
+</form>
+    </section>
+</body>
+</html>
+{% endblock %}

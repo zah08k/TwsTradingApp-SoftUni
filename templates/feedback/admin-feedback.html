@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Feedback</th>
+            <th>Date Submitted</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for feedback in object_list %}
+            <tr>
+                <td>{{ feedback.user.username }}</td>
+                <td>{{ feedback.feedback_text }}</td>
+                <td>{{ feedback.timestamp }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

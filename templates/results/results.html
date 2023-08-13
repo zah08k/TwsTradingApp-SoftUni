@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Backtesting Results</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Symbol</th>
+          <th scope="col">Strategy</th>
+          <th scope="col">Parameters</th>
+          <th scope="col">Performance</th>
+          <th scope="col">PnL Chart</th>
+          <th scope="col">Backtest Finished</th>
+          <th scope="col">Add to Portfolio</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in strategy_data %}
+        <tr>
+          <td>{{ data.ticker }}</td>
+          <td>{{ data.strategy }}</td>
+          <td>
+              {% if data.parameter1 %}
+                {{ data.parameter1 }}
+              {% endif %}
+              {% if data.parameter2 %}
+                <br>{{ data.parameter2 }}
+              {% endif %}
+              {% if data.parameter3 %}
+                <br>{{ data.parameter3 }}
+              {% endif %}
+          </td>
+          <td>
+            Biggest Loss: {{ data.biggest_loss }}<br>
+            Biggest Win: {{ data.biggest_win }}<br>
+            Average PnL: {{ data.avg_pnl }}
+          </td>
+            <td>{{ data.graph|safe }}</td>
+            <td>{{ data.backtest_finished }}</td>
+            <td>
+                <form method="post" action="{% url 'add strategy' data.results_id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="strategy_id" value="{{ data.id }}">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

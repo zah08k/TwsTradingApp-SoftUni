@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>{{ message }}</p>
+
+<a href="{% url 'portfolio' %}">
+    <button>Back to portfolio</button>
+</a>
+
+<!-- Other content -->
+{% endblock %}

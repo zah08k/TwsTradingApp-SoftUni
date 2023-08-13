@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for strategy in strategies %}
+    <h2><a href="{% url 'strategy detail' strategy.pk %}">{{ strategy.name }}</a></h2>
+{% endfor %}
+{% endblock %}
+

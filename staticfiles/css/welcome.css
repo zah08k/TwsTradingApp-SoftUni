@@ -1,0 +1,45 @@
+.welcomePage {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+.welcomePage h2 {
+    color: #343a40;
+    margin-bottom: 20px;
+}
+.welcomePage p {
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+.welcomePage button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.features {
+    display: flex;
+    justify-content: space-between;
+}
+.feature-box {
+    display: flex;
+    flex-direction: column;  /* Stack items vertically */
+    align-items: center;  /* Center items horizontally */
+    text-align: center;  /* Center text */
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 30%;
+}
+
+.feature-box img {
+    width: 50px;  /* Adjust the size of the icon */
+    height: 50px;  /* Adjust the size of the icon */
+    margin-right: 20px;
+}

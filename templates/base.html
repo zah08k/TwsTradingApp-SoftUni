@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TWS Trading App</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="{% url 'index' %}"><h1>TWS Trading App</h1></a>
+            </div>
+            <nav>
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'strategies' %}">Backtest</a></li>
+                    <li><a href="{% url 'results' %}">Results</a></li>
+                    <li><a href="{% url 'portfolio' %}">Portfolio</a></li>
+
+                    {% if user.is_superuser %}
+                    <li><a href="{% url 'admin-feedback' %}">Feedbacks</a></li>
+                    {% endif %}
+
+                    <li><a href="{% url 'sign out' %}">Sign out</a></li>
+
+                    {% else %}
+                    <li><a href="{% url 'sign up' %}">Sign Up</a></li>
+                    <li><a href="{% url 'sign in' %}">Sign In</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2023 TWS Trading App. All rights reserved.</p>
+            <a href="{% url 'submit-feedback' %}">Give Feedback</a>
+        </div>
+    </footer>
+
+</body>
+</html>
+

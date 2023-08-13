@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h1>{{ strategy.name }}</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Start Backtest</button>
+            </form>
+        </div>
+
+        <div class="col-lg-6">
+            <h2>Strategy Description</h2>
+            <p>{{ strategy.strategy_description|linebreaks }}</p>
+
+            <h3>Input Parameters</h3>
+            <p>{{ strategy.parameters_description|linebreaks }}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+

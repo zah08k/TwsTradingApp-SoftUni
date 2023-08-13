@@ -1,0 +1,23 @@
+To get list of all running Docker containers along with their IDs:
+docker ps
+
+then:
+docker exec -it [container-name] python manage.py makemigrations
+docker exec -it [container-name] python manage.py migrate
+
+Example:
+docker exec -it twstradingapp-web-1 python manage.py makemigrations
+docker exec -it twstradingapp-web-1 python manage.py migrate
+
+
+To delete table:
+docker exec -it twstradingapp-web-1 python manage.py shell
+
+from django.db import connection
+
+with connection.cursor() as cursor:
+    cursor.execute("DROP TABLE IF EXISTS trading_profile;")
+
+
+
+

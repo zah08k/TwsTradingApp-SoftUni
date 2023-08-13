@@ -1,0 +1,35 @@
+If I want to run Django management commands such as python manage.py makemigrations or
+python manage.py migrate, I'll have to run these inside the Docker container. For example, to run migrations,
+I can use a command like the following:
+docker exec -it twstradingapp-web-1 python manage.py migrate
+
+
+
+***********************************************************************************************************************
+Run Locally vs Docker:
+My Django settings are configured
+to use Docker services. In my settings file, I've set the HOST for my database to 'db', which is the service
+name of my PostgreSQL database in Docker.
+
+The host 'db' is not accessible when running the Django app locally because it is only valid within the Docker network
+created by Docker Compose. If I want to run my Django app locally, I'll need to change the HOST back to
+'localhost' or '127.0.0.1'.
+
+Alternatively, if I want to keep my settings consistent for Docker, I can create a local settings file for
+development outside Docker. Example:
+# settings_local.py
+from .settings import *  # import all the original settings
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "tws_trading_db",
+        "USER": "postgres-user",
+        "PASSWORD": "password",
+        "HOST": "localhost",  # use localhost for local development
+        "PORT": "5432",
+    }
+}
+
+When running Django commands locally, I can use the --settings option to specify the local settings file. For example:
+python manage.py runserver --settings=TwsTradingApp.settings_local

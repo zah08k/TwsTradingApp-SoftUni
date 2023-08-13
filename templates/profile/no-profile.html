@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Started | TWS Trading App</title>
+    <link rel="stylesheet" href="{% static 'css/welcome.css' %}">
+</head>
+<body>
+    <section id="registerPage" class="registerPage">
+        <h2>Welcome to TWS Trading App</h2>
+        <p>Start your algorithmic trading journey today. Backtest and deploy your strategies with ease.</p>
+        <div class="features">
+            <div class="feature-box">
+                <img src="{% static 'icons/icon1.png' %}" alt="Icon 1">
+                <div>
+                    <h4>Backtest Strategies</h4>
+                    <p>Backtest different strategies on various instruments to find the most effective solutions.</p>
+                </div>
+            </div>
+            <div class="feature-box">
+                <img src="{% static 'icons/icon2.png' %}" alt="Icon 2">
+                <div>
+                    <h4>Analyze Results</h4>
+                    <p>Review your backtest results and save your favorite strategies for future use.</p>
+                </div>
+            </div>
+            <div class="feature-box">
+                <img src="{% static 'icons/icon3.png' %}" alt="Icon 3">
+                <div>
+                    <h4>Deploy and Relax</h4>
+                    <p>Deploy your best strategies. Our Algo-Trading-Bot will handle the trading for you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+{% endblock %}
+
+
+

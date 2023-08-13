@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Deployed Strategies</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Symbol</th>
+          <th scope="col">Strategy</th>
+          <th scope="col">Parameters</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in deployed_strategies %}
+        <tr>
+            {% if data.deployed == True %}
+              <td>{{ data.ticker }}</td>
+              <td>{{ data.name }}</td>
+              <td>
+                  {% if data.parameter1 %}
+                    {{ data.parameter1 }}
+                  {% endif %}
+                  {% if data.parameter2 %}
+                    <br>{{ data.parameter2 }}
+                  {% endif %}
+                  {% if data.parameter3 %}
+                    <br>{{ data.parameter3 }}
+                  {% endif %}
+              </td>
+               <td>
+                    <form method="post" action="{% url 'stop strategy' data.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="strategy_id" value="{{ data.id }}">
+                        <button type="submit" class="btn btn-primary">Stop</button>
+                    </form>
+                </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+
+  <h2>Inactive Strategies</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Symbol</th>
+          <th scope="col">Strategy</th>
+          <th scope="col">Parameters</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in inactive_strategies %}
+        <tr>
+        {% if data.deployed == False %}
+          <td>{{ data.ticker }}</td>
+          <td>{{ data.name }}</td>
+          <td>
+              {% if data.parameter1 %}
+                {{ data.parameter1 }}
+              {% endif %}
+              {% if data.parameter2 %}
+                <br>{{ data.parameter2 }}
+              {% endif %}
+              {% if data.parameter3 %}
+                <br>{{ data.parameter3 }}
+              {% endif %}
+          </td>
+           <td>
+                <form method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="hidden" name="strategy_id" value="{{ data.id }}">
+                    <button type="submit" formaction="{% url 'deploy strategy' data.id %}" class="btn btn-primary">Deploy</button>
+                </form>
+                <form method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="hidden" name="strategy_id" value="{{ data.id }}">
+                    <button type="submit" formaction="{% url 'remove strategy' data.id %}" class="btn btn-primary">Remove</button>
+                </form>
+            </td>
+        {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

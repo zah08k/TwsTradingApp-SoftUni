@@ -1,0 +1,6 @@
+To be able to connect to TWS when using Docker, one approach would be to use the special
+host.docker.internal DNS name to access the host machine's network:
+
+app.connect("host.docker.internal", 7497, clientId=5)
+
+instead of: app.connect("127.0.0.1", 7497, clientId=5)

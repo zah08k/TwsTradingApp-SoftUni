@@ -1,0 +1,23 @@
+I should add any new package I need to requirements.txt file. Example:
+
+pandas==2.0.3
+
+Rebuild the Docker image. I can do this with the
+
+docker-compose up --build
+
+command. This tells Docker to rebuild my image, which includes installing the packages listed in requirements.txt file.
+
+################################################################################################
+
+When installing plotly, I pip installed it, added it to requirements.txt and performed docker-compose up --build.
+However, it was not installed in the celery, celery-beat and web containers. So I did the following for all of the 3
+containers:
+
+docker exec -it [container id] /bin/bash
+python
+pip install plotly
+
+
+NOTE: I tried the same for ibapi, but I didn't have to type 'python' but instead 'pip install ibapi' straight away
+
