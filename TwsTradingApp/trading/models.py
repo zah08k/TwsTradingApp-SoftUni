@@ -75,7 +75,6 @@ def validate_only_alphanumeric(value):
             raise exceptions.ValidationError('Ensure this value contains only letters, numbers, and underscore.')
 
 
-# TODO: Do I need Profile, when we use class based views and all goes to auth_user in db...
 class Profile(models.Model):
 
     MAX_LEN_USERNAME = 15

@@ -210,7 +210,6 @@ def deploy_strategy(request, pk):
     if not Portfolio.objects.filter(ticker=strategy.ticker, deployed=True).exists():
         exchange, month, client_id = contract_trading_specs(strategy.ticker)
 
-        # Instantiating and deploying the strategy
         order_strategy = SimpleOrderStrategy(strategy.ticker, exchange, month, client_id)
         order_strategy.place_order()
 

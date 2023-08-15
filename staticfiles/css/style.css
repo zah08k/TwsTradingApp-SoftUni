@@ -51,8 +51,8 @@ main {
 }
 
 header .logo a {
-    color: #fff; /* Change the text color */
-    text-decoration: none; /* Remove the underline */
+    color: #fff;
+    text-decoration: none;
 }
 
 .footer-content {

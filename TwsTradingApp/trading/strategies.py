@@ -3,7 +3,6 @@ import numpy as np
 from celery import shared_task
 
 from TwsTradingApp.trading.models import HistoricalData, BacktestResults, Strategy
-import time
 
 
 def get_data_for_ticker(ticker):

@@ -18,7 +18,7 @@ class FeedbackAdmin(admin.ModelAdmin):
 
     list_display = ('display_username', 'display_email', 'timestamp')
     list_filter = ('timestamp',)
-    search_fields = ('user__username', 'user__email')  # Searching by user's username and email
+    search_fields = ('user__username', 'user__email')
     ordering = ('-timestamp',)
 
     def display_username(self, obj):
